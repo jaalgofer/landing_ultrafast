@@ -2,7 +2,7 @@
     "Header": {
         "title": "We are a Landing Page",
         "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum.",
-        "banner": "../img/intro-bg.jpg"
+        "banner": "../img/seminar.jpg"
     },
     "About": {
         "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -53,50 +53,79 @@
     ],
     "Team": [
         {
-            "img": "img/team/01.jpg",
-            "name": "John Doe",
-            "job": "Director"
+            "img": "img/team/Francisco.jpg",
+            "name": "Francisco Munoz Alvarez",
+            "job": "CloudDB"
         },
         {
-            "img": "img/team/02.jpg",
-            "name": "Mike Doe",
+            "img": "img/team/connor.jpg",
+            "name": "Connor McDonnald",
+            "job": "Oracle"
+        },
+        {
+            "img": "img/team/miked.jpg",
+            "name": "Mike Dietrich",
             "job": "Senior Designer"
         },
         {
-            "img": "img/team/03.jpg",
-            "name": "Jane Doe",
-            "job": "Senior Designer"
-        },
-        {
-            "img": "img/team/04.jpg",
-            "name": "Karen Doe",
-            "job": "Project Manager"
+            "img": "img/team/heli.jpg",
+            "name": "Heli Helskyaho",
+            "job": "Miracle Finland Oy"
         }
     ],
     "Partner": [
         {
-            "img": "img/partners/Adobe.svg"
+            "img": "img/partners/CloudDB.png"
         },
         {
-            "img": "img/partners/Amazon.svg"
+            "img": "img/partners/groundbreakerslogo.png"
         },
         {
-            "img": "img/partners/AMD.svg"
+            "img": "img/partners/usergroups.png"
         },
         {
-            "img": "img/partners/Canon.svg"
+            "img": "img/partners/ACEDirector.png"
         },
         {
-            "img": "img/partners/Qualcomm.svg"
+            "img": "img/partners/Oracle_ACE.jpg"
         },
         {
-            "img": "img/partners/Microsoft.svg"
+            "img": "img/partners/oracleuniversity.png"
+        }
+    ],
+    "Group": [
+        {
+            "img": "img/group/APJUG.jpg"
         },
         {
-            "img": "img/partners/Nvidia.svg"
+            "img": "img/group/CHINA_EXPERIENCE.jpg"
         },
         {
-            "img": "img/partners/Redhat.svg"
+            "img": "img/group/IAOUG2.png"
+        },
+        {
+            "img": "img/group/jpoug.jpg"
+        },
+        {
+            "img": "img/group/kimono_duke.png"
+        },
+        {
+            "img": "img/group/koug.jpg"
+        },
+        {
+            "img": "img/group/MelbJVM.png"
+        },
+        {
+            "img": "img/group/nzoug.jpeg"
+        },
+        {
+            "img": "img/group/SGOUG.png"
+        },
+        {
+            "img": "img/group/soug.png"
+        },
+        {
+            "img": "img/group/TWJUG.jpg"
         }
     ],
     "Contact": {

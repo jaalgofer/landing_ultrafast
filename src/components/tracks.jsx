@@ -1,13 +1,9 @@
 export const Tracks = (props) => {
   return (
-    <div id='tracks' className='text-center'>
+    <div id='tracks' className='section text-center'>
       <div className='container'>
         <div className='section-title'>
           <h2>Tracks</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed
-            dapibus leonec.
-          </p>
         </div>
         <div className='row'>
           {props.data

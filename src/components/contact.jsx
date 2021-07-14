@@ -1,4 +1,3 @@
-const _date = new Date()
 export const Contact = ({ data }) => {
 
   return (
@@ -7,9 +6,14 @@ export const Contact = ({ data }) => {
         <div className='container'>
           <div className='col-md-8 col-md-offset-2 section-title'>
             <h2>{data?.titleEvent ? data.titleEvent : "React landing page"}</h2>
-            <h3>
-              {(data?.start && data?.end) ? data.start : `${_date.getDay()} - ${_date.getDay()} ${_date.getMonth()} ${_date.getFullYear()}`}
-            </h3>
+            <div className="row feature">
+              <ul>
+                <li><i className="fa fa-location-arrow" /><span>Online, 4 Languages</span></li>
+                <li><i className="fa fa-calendar" /><span>19/10/20 - 30/10/20</span></li>
+                <li><i className="fa fa-microphone" /><span>Over 117  Speakers</span></li>
+                <li><i className="fa fa-ticket" /><span>Free to attend</span></li>
+              </ul>
+            </div>
             <div className="row">
               <p>Not logged yet?</p>
               <button type='submit' className='btn btn-custom btn-lg'>

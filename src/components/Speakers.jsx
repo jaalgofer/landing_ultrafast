@@ -1,24 +1,20 @@
-export const Speakers = ({ title, description, data }) => {
+export const Speakers = ({ id, title, description, data }) => {
   return (
-    <div id={!title ? 'speaker' : title} className='speaker text-center'>
+    <div id={!id ? 'Speaker' : id} className='section speaker text-center'>
       <div className='container'>
         <div className='col-md-8 col-md-offset-2 section-title'>
-          <h2>{!title ? "Speakers" : title}</h2>
-          <p>
-            {!description ?
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed dapibus leonec."
-              :
-              description
-            }
-          </p>
+          <h2>{title ? title : "Speakers"}</h2>
+          {description && <p>{description}</p>}
         </div>
-        <div id='row'>
+        <div className={`figures${!id ? '' : ' notSpeaker'}`}>
           {data
             ? data.map((d, i) => (
-              <div key={`${d.name}-${i}`} className='col-md-3 col-sm-6 team'>
+              <div key={`${d.name}-${i}`} className='team'>
                 <div className='thumbnail'>
                   {' '}
-                  <img src={d.img} alt='...' className='team-img' />
+                  <div className='img'>
+                    <img src={d.img} alt='...' className='team-img' />
+                  </div>
                   {d?.name &&
                     <div className='caption'>
                       {d?.name && <h4>{d.name}</h4>}
