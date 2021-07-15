@@ -1,7 +1,10 @@
 export const Speakers = ({ id, title, description, data }) => {
   return (
-    <div id={!id ? 'Speaker' : id} className='section speaker text-center'>
-      <div className='container'>
+    <div id={!id ? 'speaker' : String(id).toLowerCase()} className='section speaker text-center'>
+      <div className='container' style={{
+        display: 'flex',
+        flexFlow: 'column'
+      }}>
         <div className='col-md-8 col-md-offset-2 section-title'>
           <h2>{title ? title : "Speakers"}</h2>
           {description && <p>{description}</p>}

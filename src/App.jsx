@@ -1,35 +1,65 @@
-import { useState, useEffect } from 'react'
-import { Navigation } from './components/navigation'
-import { Header } from './components/header'
-import { About } from './components/about'
-import { Tracks } from './components/tracks'
-import { Speakers } from './components/Speakers'
-import { Contact } from './components/contact'
-import JsonData from './data/data.json'
-import SmoothScroll from 'smooth-scroll'
+import { useState, useEffect, useLayoutEffect, useContext } from 'react'
+import { BrowserRouter, Switch, Route } from "react-router-dom"
+import jsCookie from 'js-cookie';
 
-export const scroll = new SmoothScroll('a[href*="#"]', {
-  speed: 1000,
-  speedAsDuration: true,
-})
+import Page from './Page';
+import CFP from './CFP';
+import JsonData from './data/data.json'
+
+import { MyUser, LoadStatus } from './context';
+import Loader from './components/Loader/Loader';
+
+const getUserByCookie = async ({ cookie, setuser }) => {
+  let user = await fetch('https://mykommu.com/p/login/auth', {
+    method: 'GET', headers: { "Content-Type": "application/json", "Authorization": `Bearer ${cookie}` }
+  })
+  if (user.ok || user.status < 400) {
+    let juser = await user.json()
+    let data = juser.data
+    return setuser({...data})
+  } else return setuser({})
+}
 
 const App = () => {
-  const [landingPageData, setLandingPageData] = useState({})
+  const [ user, setuser ] = useState({})
+  const [ loading, setloading ] = useState(true)
+  const [ landingPageData, setLandingPageData ] = useState({})
+  const [ cookie, setcookie ] = useState(jsCookie.get('kommu-session'))
+  // console.log(cookie);
   useEffect(() => {
     setLandingPageData(JsonData)
+    if (cookie) getUserByCookie({cookie, setuser})
+  }, [])
+  useLayoutEffect(() => {
+    setcookie(jsCookie.get('kommu-session'))
   }, [])
 
+  const myUser = MyUser
+  const loadVal = useContext(LoadStatus)
+  const assign = {
+    status: loading, change: () => setloading(!loading)
+  }
+
   return (
-    <div>
-      <Navigation />
-      <Header data={landingPageData.Header} />
-      <About data={landingPageData.About} />
-      <Speakers data={landingPageData.Team} />
-      <Tracks data={landingPageData.Services} />
-      <Speakers id="Partnership" title="Sponsors" data={landingPageData.Partner} />
-      <Speakers id="Group" title="Participants User Groups" data={landingPageData.Group} />
-      <Contact data={landingPageData.Contact} />
-    </div>
+    <>
+      <LoadStatus.Provider value={assign}>
+        <BrowserRouter>
+          <myUser.Provider value={ user } >
+            <Switch>
+              <Route exact  path="/cfp" >
+                {CFP}
+              </Route>
+              <Route exact  path="/" >
+                <Page user={ user } landingPageData={ landingPageData } ></Page>
+              </Route>
+            </Switch>
+          </myUser.Provider>
+        </BrowserRouter>
+        <LoadStatus.Consumer>
+          {({status}) => status && <Loader status={loadVal} />}
+        </LoadStatus.Consumer>
+      </LoadStatus.Provider>
+    </>
   )
 }
 

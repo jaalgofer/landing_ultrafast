@@ -1,4 +1,45 @@
+import { useState, useEffect, useContext } from 'react';
+import { MyUser, LoadStatus } from '../context';
+
+const fetchAuth = async (setloading) => new Promise(async (resolve, reject) => {
+  setloading(false)
+  let res = await fetch(`https://auth.mykommu.com/t/auth/authorize`).catch(err => {
+    console.log(err);
+    reject(err)
+  })
+  let resp = await res.json()
+  console.log(resp);
+  if (!resp.token) reject(resp.err || undefined)
+  else resolve({...resp})
+})
+
 export const Contact = ({ data }) => {
+  const [ token, settoken ] = useState('')
+  const [ loading, setloading ] = useState(false)
+  const loadVal = useContext(LoadStatus)
+  // console.log(token);
+
+  useEffect(() => {
+    loadVal.change(loading)
+  }, [ loading ])
+
+  const signin = async () => {
+    fetchAuth(setloading).then((res) => {
+      console.log(res);
+      if (res.successful) {
+        setloading(false)
+        return settoken(res.payload.token)
+      }
+      else {
+        setloading(false)
+        return window.open(`https://auth.mykommu.com/qa/login?continue=${window.location.href}`, 'same', false)
+      }
+    }).catch((err) => {
+      console.log(err);
+      setloading(false)
+      window.open(`https://auth.mykommu.com/qa/login?continue=${window.location.href}`, 'same', false)
+    });
+  }
 
   return (
     <div>
@@ -16,7 +57,7 @@ export const Contact = ({ data }) => {
             </div>
             <div className="row">
               <p>Not logged yet?</p>
-              <button type='submit' className='btn btn-custom btn-lg'>
+              <button type='button' className='btn btn-custom btn-lg' onClick={() => signin()} >
                 Join With Kommu
               </button>
             </div>

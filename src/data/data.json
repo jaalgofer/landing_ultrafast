@@ -4,6 +4,16 @@
         "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum.",
         "banner": "../img/seminar.jpg"
     },
+    "Call": {
+        "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "url": "https://mykommu.event-config.com/123/callforpaper",
+        "Why": [
+            "Lorem ipsum dolor",
+            "Tempor incididunt",
+            "Lorem ipsum dolor",
+            "Incididunt ut labore"
+        ]
+    },
     "About": {
         "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "Why": [
@@ -19,8 +29,7 @@
             "Lorem ipsum dolor"
         ]
     },
-    "Services": [
-        {
+    "Services": [{
             "icon": "fa fa-wordpress",
             "name": "Lorem ipsum dolor",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
@@ -51,8 +60,7 @@
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
         }
     ],
-    "Team": [
-        {
+    "Team": [{
             "img": "img/team/Francisco.jpg",
             "name": "Francisco Munoz Alvarez",
             "job": "CloudDB"
@@ -73,8 +81,7 @@
             "job": "Miracle Finland Oy"
         }
     ],
-    "Partner": [
-        {
+    "Partner": [{
             "img": "img/partners/CloudDB.png"
         },
         {
@@ -93,8 +100,7 @@
             "img": "img/partners/oracleuniversity.png"
         }
     ],
-    "Group": [
-        {
+    "Group": [{
             "img": "img/group/APJUG.jpg"
         },
         {
@@ -136,8 +142,7 @@
         "twitter": "twitter.com",
         "youtube": "youtube.com"
     },
-    "Features": [
-        {
+    "Features": [{
             "icon": "fa fa-comments-o",
             "title": "Lorem ipsum",
             "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."

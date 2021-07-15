@@ -1,4 +1,47 @@
+import { useState, useContext, useEffect } from 'react';
+
+import { LoadStatus } from '../context';
+
+const fetchAuth = async (setloading) => new Promise(async (resolve, reject) => {
+  setloading(true)
+  let res = await fetch(`https://auth.mykommu.com/t/auth/authorize`).catch(err => {
+    console.log(err);
+    reject(err)
+  })
+  let resp = await res.json()
+  console.log(resp);
+  if (!resp.token) reject(resp.err || undefined)
+  else resolve({...resp})
+})
+
 export const Header = ({ data }) => {
+  const [ token, settoken ] = useState('')
+  const [ loading, setloading ] = useState(false)
+  const loadVal = useContext(LoadStatus)
+  // console.log(token);
+
+  useEffect(() => {
+    loadVal.change(loading)
+  }, [ loading ])
+
+  const signin = async () => {
+    fetchAuth(setloading).then((res) => {
+      console.log(res);
+      if (res.successful) {
+        setloading(false)
+        return settoken(res.payload.token)
+      }
+      else {
+        setloading(false)
+        return window.open(`https://auth.mykommu.com/qa/login?continue=${window.location.href}`, 'same', false)
+      }
+    }).catch((err) => {
+      console.log(err);
+      setloading(false)
+      window.open(`https://auth.mykommu.com/qa/login?continue=${window.location.href}`, 'same', false)
+    });
+  }
+
   return (
     <header id='header' className='text-center'>
       <div className='intro'>
@@ -20,12 +63,10 @@ export const Header = ({ data }) => {
                     <li><i className="fa fa-ticket" /><span>Free to attend</span></li>
                   </ul>
                 </div>
-                <a
-                  href='#features'
-                  className='btn btn-custom btn-sm page-scroll'
-                >
+                <button className='btn btn-custom btn-sm page-scroll' onClick={ () => signin() } >
                   Join With Kommu
-                </a>{' '}
+                </button>
+                { ' ' }
               </div>
             </div>
           </div>
